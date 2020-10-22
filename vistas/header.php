@@ -10,16 +10,17 @@ require_once("../config/conexion.php");
 
  if(isset($_SESSION['id_usuario']))
  {
+  require_once("../modelos/Categoria.php");
   require_once("../modelos/Productos.php");
   require_once("../modelos/Proveedores.php");
   require_once("../modelos/Usuarios.php");
   require_once("../modelos/Clientes.php");
 
-
+  $categoria = new Categoria();
    $producto = new Producto();
    $proveedor = new Proveedor();
    $cliente = new Cliente();
-   $usuario = new Usuarios();
+   $usuarios = new Usuarios();
 
 ?>
 
@@ -120,7 +121,7 @@ require_once("../config/conexion.php");
         
                           <li class="user-footer">
                       <div class="pull-left">
-                      <a href="#" class="btn btn-default btn-flat" onclick="mostrar_perfil('<?php echo $_SESSION['usuario']?>')" 
+                      <a href="#" class="btn btn-default btn-flat" onclick="mostrar_perfil('<?php echo $_SESSION['id_usuario']?>')" 
                       data-toggle="modal" data-target="#perfilModal"> Perfil</a>
                       </div>
                       <div class="pull-right">
@@ -166,17 +167,32 @@ require_once("../config/conexion.php");
                         </a>
                       </li>
 
+                      <?php if($_SESSION['categoria']==1)
+                      {
+
+                        echo '<li class="nav-item">
+                        <a href="categoria.php" class="nav-link">
+                          <i class="fa fa-list" aria-hidden="true"></i>
+                              <p>
+                              Categoria
+                              </p> 
+                          </a>
+                        </li>';
+
+                      }
+
+                    ?>
                       <?php if($_SESSION['clientes']==1)
                       {
 
-                        echo "<li class='nav-item'>
-                        <a href='clientes.php' class='nav-link'>
-                          <i class='fa fa-list' aria-hidden='true'></i>
+                        echo '<li class="nav-item">
+                        <a href="clientes.php" class="nav-link">
+                          <i class="fa fa-list" aria-hidden="true"></i>
                               <p>
                               Clientes
                               </p> 
                           </a>
-                        </li>";
+                        </li>';
 
                       }
 
