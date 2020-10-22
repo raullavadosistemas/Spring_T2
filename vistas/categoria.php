@@ -118,12 +118,12 @@
   </div>
 </div>
  <!--FIN FORMULARIO VENTANA MODAL-->
-      <?php  } else {
+ <?php  } else {
 
-          require("../vistas/404.php");
-          }
+require("noacceso.php");
+}
 
-          ?><!--CIERRE DE SESSION DE PERMISO -->  
+?><!--CIERRE DE SESSION DE PERMISO -->  
 <?php
 
   require_once("footer.php");
@@ -144,4 +144,6 @@
   
 
 ?>
+
+
 
